@@ -10,7 +10,7 @@ public class TextBuilder {
 	public TextComponent currentTextComponent;
 
 	public TextBuilder(final String text) {
-		this.textComponent = new TextComponent(Common.colorize(text));
+		this.textComponent = new TextComponent(Utilities.colorize(text));
 		this.currentTextComponent = this.textComponent;
 	}
 
@@ -31,7 +31,7 @@ public class TextBuilder {
 
 	public TextBuilder addText(final String text) {
 		this.textComponent.addExtra(this.currentTextComponent);
-		this.currentTextComponent = new TextComponent(Common.colorize(text));
+		this.currentTextComponent = new TextComponent(Utilities.colorize(text));
 		return this;
 	}
 

@@ -20,175 +20,177 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Common {
+import static net.md_5.bungee.api.ChatColor.*;
+
+public class Utilities {
 	public static final Pattern hexPattern;
 	public static final Pattern gradientPattern;
 	public static final Pattern rainbowPattern;
 	public static Map<Integer, String> alphabet;
 
 	static {
-		Common.alphabet = new HashMap<>();
+		Utilities.alphabet = new HashMap<>();
 		hexPattern = Pattern.compile("&#[a-fA-F0-9]{6}");
 		gradientPattern = Pattern.compile("&#g.[a-fA-F0-9]{6}.[a-fA-F0-9]{6}");
 		rainbowPattern = Pattern.compile("&#r");
-		Common.alphabet.put(0, "0");
-		Common.alphabet.put(1, "1");
-		Common.alphabet.put(2, "2");
-		Common.alphabet.put(3, "3");
-		Common.alphabet.put(4, "4");
-		Common.alphabet.put(5, "5");
-		Common.alphabet.put(6, "6");
-		Common.alphabet.put(7, "7");
-		Common.alphabet.put(8, "8");
-		Common.alphabet.put(9, "9");
-		Common.alphabet.put(11, "%");
-		Common.alphabet.put(12, "@");
-		Common.alphabet.put(13, "#");
-		Common.alphabet.put(14, "$");
-		Common.alphabet.put(15, "!");
-		Common.alphabet.put(16, "?");
-		Common.alphabet.put(17, "*");
-		Common.alphabet.put(18, "<");
-		Common.alphabet.put(19, ">");
-		Common.alphabet.put(20, "~");
-		Common.alphabet.put(21, "A");
-		Common.alphabet.put(22, "B");
-		Common.alphabet.put(23, "C");
-		Common.alphabet.put(24, "D");
-		Common.alphabet.put(25, "E");
-		Common.alphabet.put(26, "F");
-		Common.alphabet.put(27, "G");
-		Common.alphabet.put(28, "H");
-		Common.alphabet.put(29, "I");
-		Common.alphabet.put(30, "J");
-		Common.alphabet.put(31, "K");
-		Common.alphabet.put(32, "L");
-		Common.alphabet.put(33, "M");
-		Common.alphabet.put(34, "N");
-		Common.alphabet.put(35, "O");
-		Common.alphabet.put(36, "P");
-		Common.alphabet.put(37, "Q");
-		Common.alphabet.put(38, "R");
-		Common.alphabet.put(39, "S");
-		Common.alphabet.put(40, "T");
-		Common.alphabet.put(41, "U");
-		Common.alphabet.put(42, "V");
-		Common.alphabet.put(43, "W");
-		Common.alphabet.put(44, "X");
-		Common.alphabet.put(45, "Y");
-		Common.alphabet.put(46, "Z");
-		Common.alphabet.put(47, "a");
-		Common.alphabet.put(48, "b");
-		Common.alphabet.put(49, "c");
-		Common.alphabet.put(50, "d");
-		Common.alphabet.put(51, "e");
-		Common.alphabet.put(52, "f");
-		Common.alphabet.put(53, "g");
-		Common.alphabet.put(54, "h");
-		Common.alphabet.put(55, "i");
-		Common.alphabet.put(56, "j");
-		Common.alphabet.put(57, "k");
-		Common.alphabet.put(58, "l");
-		Common.alphabet.put(59, "m");
-		Common.alphabet.put(60, "n");
-		Common.alphabet.put(61, "o");
-		Common.alphabet.put(62, "p");
-		Common.alphabet.put(63, "q");
-		Common.alphabet.put(64, "r");
-		Common.alphabet.put(65, "s");
-		Common.alphabet.put(66, "t");
-		Common.alphabet.put(67, "u");
-		Common.alphabet.put(68, "v");
-		Common.alphabet.put(69, "w");
-		Common.alphabet.put(70, "x");
-		Common.alphabet.put(71, "y");
-		Common.alphabet.put(72, "z");
-		Common.alphabet.put(73, "А");
-		Common.alphabet.put(74, "Б");
-		Common.alphabet.put(75, "В");
-		Common.alphabet.put(76, "Г");
-		Common.alphabet.put(77, "Д");
-		Common.alphabet.put(78, "Е");
-		Common.alphabet.put(79, "Ё");
-		Common.alphabet.put(80, "Ж");
-		Common.alphabet.put(81, "З");
-		Common.alphabet.put(82, "И");
-		Common.alphabet.put(83, "Й");
-		Common.alphabet.put(84, "К");
-		Common.alphabet.put(85, "Л");
-		Common.alphabet.put(86, "М");
-		Common.alphabet.put(87, "Н");
-		Common.alphabet.put(88, "О");
-		Common.alphabet.put(89, "П");
-		Common.alphabet.put(90, "Р");
-		Common.alphabet.put(91, "С");
-		Common.alphabet.put(92, "Т");
-		Common.alphabet.put(93, "У");
-		Common.alphabet.put(94, "Ф");
-		Common.alphabet.put(95, "Х");
-		Common.alphabet.put(96, "Ц");
-		Common.alphabet.put(97, "Ч");
-		Common.alphabet.put(98, "Ш");
-		Common.alphabet.put(99, "Щ");
-		Common.alphabet.put(100, "Ъ");
-		Common.alphabet.put(101, "Ы");
-		Common.alphabet.put(102, "Ь");
-		Common.alphabet.put(103, "Э");
-		Common.alphabet.put(104, "Ю");
-		Common.alphabet.put(105, "Я");
-		Common.alphabet.put(106, "а");
-		Common.alphabet.put(107, "б");
-		Common.alphabet.put(108, "в");
-		Common.alphabet.put(109, "г");
-		Common.alphabet.put(110, "д");
-		Common.alphabet.put(111, "е");
-		Common.alphabet.put(112, "ё");
-		Common.alphabet.put(113, "ж");
-		Common.alphabet.put(114, "з");
-		Common.alphabet.put(115, "и");
-		Common.alphabet.put(116, "й");
-		Common.alphabet.put(117, "к");
-		Common.alphabet.put(118, "л");
-		Common.alphabet.put(119, "м");
-		Common.alphabet.put(120, "н");
-		Common.alphabet.put(121, "о");
-		Common.alphabet.put(122, "п");
-		Common.alphabet.put(123, "р");
-		Common.alphabet.put(124, "с");
-		Common.alphabet.put(125, "т");
-		Common.alphabet.put(126, "у");
-		Common.alphabet.put(127, "ф");
-		Common.alphabet.put(128, "х");
-		Common.alphabet.put(129, "ц");
-		Common.alphabet.put(130, "ч");
-		Common.alphabet.put(131, "ш");
-		Common.alphabet.put(132, "щ");
-		Common.alphabet.put(133, "ъ");
-		Common.alphabet.put(134, "ы");
-		Common.alphabet.put(135, "ь");
-		Common.alphabet.put(136, "э");
-		Common.alphabet.put(137, "ю");
-		Common.alphabet.put(138, "я");
-		Common.alphabet.put(139, "&");
-		Common.alphabet.put(140, "(");
-		Common.alphabet.put(141, ")");
-		Common.alphabet.put(142, "[");
-		Common.alphabet.put(143, "]");
-		Common.alphabet.put(144, ",");
-		Common.alphabet.put(145, ".");
-		Common.alphabet.put(146, "/");
-		Common.alphabet.put(147, ";");
-		Common.alphabet.put(148, "'");
-		Common.alphabet.put(149, "^");
-		Common.alphabet.put(150, "=");
-		Common.alphabet.put(151, "+");
-		Common.alphabet.put(152, "-");
-		Common.alphabet.put(153, " ");
+		Utilities.alphabet.put(0, "0");
+		Utilities.alphabet.put(1, "1");
+		Utilities.alphabet.put(2, "2");
+		Utilities.alphabet.put(3, "3");
+		Utilities.alphabet.put(4, "4");
+		Utilities.alphabet.put(5, "5");
+		Utilities.alphabet.put(6, "6");
+		Utilities.alphabet.put(7, "7");
+		Utilities.alphabet.put(8, "8");
+		Utilities.alphabet.put(9, "9");
+		Utilities.alphabet.put(11, "%");
+		Utilities.alphabet.put(12, "@");
+		Utilities.alphabet.put(13, "#");
+		Utilities.alphabet.put(14, "$");
+		Utilities.alphabet.put(15, "!");
+		Utilities.alphabet.put(16, "?");
+		Utilities.alphabet.put(17, "*");
+		Utilities.alphabet.put(18, "<");
+		Utilities.alphabet.put(19, ">");
+		Utilities.alphabet.put(20, "~");
+		Utilities.alphabet.put(21, "A");
+		Utilities.alphabet.put(22, "B");
+		Utilities.alphabet.put(23, "C");
+		Utilities.alphabet.put(24, "D");
+		Utilities.alphabet.put(25, "E");
+		Utilities.alphabet.put(26, "F");
+		Utilities.alphabet.put(27, "G");
+		Utilities.alphabet.put(28, "H");
+		Utilities.alphabet.put(29, "I");
+		Utilities.alphabet.put(30, "J");
+		Utilities.alphabet.put(31, "K");
+		Utilities.alphabet.put(32, "L");
+		Utilities.alphabet.put(33, "M");
+		Utilities.alphabet.put(34, "N");
+		Utilities.alphabet.put(35, "O");
+		Utilities.alphabet.put(36, "P");
+		Utilities.alphabet.put(37, "Q");
+		Utilities.alphabet.put(38, "R");
+		Utilities.alphabet.put(39, "S");
+		Utilities.alphabet.put(40, "T");
+		Utilities.alphabet.put(41, "U");
+		Utilities.alphabet.put(42, "V");
+		Utilities.alphabet.put(43, "W");
+		Utilities.alphabet.put(44, "X");
+		Utilities.alphabet.put(45, "Y");
+		Utilities.alphabet.put(46, "Z");
+		Utilities.alphabet.put(47, "a");
+		Utilities.alphabet.put(48, "b");
+		Utilities.alphabet.put(49, "c");
+		Utilities.alphabet.put(50, "d");
+		Utilities.alphabet.put(51, "e");
+		Utilities.alphabet.put(52, "f");
+		Utilities.alphabet.put(53, "g");
+		Utilities.alphabet.put(54, "h");
+		Utilities.alphabet.put(55, "i");
+		Utilities.alphabet.put(56, "j");
+		Utilities.alphabet.put(57, "k");
+		Utilities.alphabet.put(58, "l");
+		Utilities.alphabet.put(59, "m");
+		Utilities.alphabet.put(60, "n");
+		Utilities.alphabet.put(61, "o");
+		Utilities.alphabet.put(62, "p");
+		Utilities.alphabet.put(63, "q");
+		Utilities.alphabet.put(64, "r");
+		Utilities.alphabet.put(65, "s");
+		Utilities.alphabet.put(66, "t");
+		Utilities.alphabet.put(67, "u");
+		Utilities.alphabet.put(68, "v");
+		Utilities.alphabet.put(69, "w");
+		Utilities.alphabet.put(70, "x");
+		Utilities.alphabet.put(71, "y");
+		Utilities.alphabet.put(72, "z");
+		Utilities.alphabet.put(73, "А");
+		Utilities.alphabet.put(74, "Б");
+		Utilities.alphabet.put(75, "В");
+		Utilities.alphabet.put(76, "Г");
+		Utilities.alphabet.put(77, "Д");
+		Utilities.alphabet.put(78, "Е");
+		Utilities.alphabet.put(79, "Ё");
+		Utilities.alphabet.put(80, "Ж");
+		Utilities.alphabet.put(81, "З");
+		Utilities.alphabet.put(82, "И");
+		Utilities.alphabet.put(83, "Й");
+		Utilities.alphabet.put(84, "К");
+		Utilities.alphabet.put(85, "Л");
+		Utilities.alphabet.put(86, "М");
+		Utilities.alphabet.put(87, "Н");
+		Utilities.alphabet.put(88, "О");
+		Utilities.alphabet.put(89, "П");
+		Utilities.alphabet.put(90, "Р");
+		Utilities.alphabet.put(91, "С");
+		Utilities.alphabet.put(92, "Т");
+		Utilities.alphabet.put(93, "У");
+		Utilities.alphabet.put(94, "Ф");
+		Utilities.alphabet.put(95, "Х");
+		Utilities.alphabet.put(96, "Ц");
+		Utilities.alphabet.put(97, "Ч");
+		Utilities.alphabet.put(98, "Ш");
+		Utilities.alphabet.put(99, "Щ");
+		Utilities.alphabet.put(100, "Ъ");
+		Utilities.alphabet.put(101, "Ы");
+		Utilities.alphabet.put(102, "Ь");
+		Utilities.alphabet.put(103, "Э");
+		Utilities.alphabet.put(104, "Ю");
+		Utilities.alphabet.put(105, "Я");
+		Utilities.alphabet.put(106, "а");
+		Utilities.alphabet.put(107, "б");
+		Utilities.alphabet.put(108, "в");
+		Utilities.alphabet.put(109, "г");
+		Utilities.alphabet.put(110, "д");
+		Utilities.alphabet.put(111, "е");
+		Utilities.alphabet.put(112, "ё");
+		Utilities.alphabet.put(113, "ж");
+		Utilities.alphabet.put(114, "з");
+		Utilities.alphabet.put(115, "и");
+		Utilities.alphabet.put(116, "й");
+		Utilities.alphabet.put(117, "к");
+		Utilities.alphabet.put(118, "л");
+		Utilities.alphabet.put(119, "м");
+		Utilities.alphabet.put(120, "н");
+		Utilities.alphabet.put(121, "о");
+		Utilities.alphabet.put(122, "п");
+		Utilities.alphabet.put(123, "р");
+		Utilities.alphabet.put(124, "с");
+		Utilities.alphabet.put(125, "т");
+		Utilities.alphabet.put(126, "у");
+		Utilities.alphabet.put(127, "ф");
+		Utilities.alphabet.put(128, "х");
+		Utilities.alphabet.put(129, "ц");
+		Utilities.alphabet.put(130, "ч");
+		Utilities.alphabet.put(131, "ш");
+		Utilities.alphabet.put(132, "щ");
+		Utilities.alphabet.put(133, "ъ");
+		Utilities.alphabet.put(134, "ы");
+		Utilities.alphabet.put(135, "ь");
+		Utilities.alphabet.put(136, "э");
+		Utilities.alphabet.put(137, "ю");
+		Utilities.alphabet.put(138, "я");
+		Utilities.alphabet.put(139, "&");
+		Utilities.alphabet.put(140, "(");
+		Utilities.alphabet.put(141, ")");
+		Utilities.alphabet.put(142, "[");
+		Utilities.alphabet.put(143, "]");
+		Utilities.alphabet.put(144, ",");
+		Utilities.alphabet.put(145, ".");
+		Utilities.alphabet.put(146, "/");
+		Utilities.alphabet.put(147, ";");
+		Utilities.alphabet.put(148, "'");
+		Utilities.alphabet.put(149, "^");
+		Utilities.alphabet.put(150, "=");
+		Utilities.alphabet.put(151, "+");
+		Utilities.alphabet.put(152, "-");
+		Utilities.alphabet.put(153, " ");
 	}
 
 	public static String colorize(String message) {
 		message = replaceSpecialSymbols(message);
-		for (Matcher matcher = Common.rainbowPattern.matcher(message); matcher.find(); matcher = Common.rainbowPattern.matcher(message)) {
+		for (Matcher matcher = Utilities.rainbowPattern.matcher(message); matcher.find(); matcher = Utilities.rainbowPattern.matcher(message)) {
 			final int start = matcher.start();
 			final int end = matcher.end();
 			String text = message.substring(end);
@@ -217,7 +219,7 @@ public class Common {
 			}
 			message = message.replace(message.substring(start, next), rainbow(text, style));
 		}
-		for (Matcher matcher = Common.gradientPattern.matcher(message); matcher.find(); matcher = Common.gradientPattern.matcher(message)) {
+		for (Matcher matcher = Utilities.gradientPattern.matcher(message); matcher.find(); matcher = Utilities.gradientPattern.matcher(message)) {
 			final int start = matcher.start();
 			final int end = matcher.end();
 			final String color = message.substring(start, end);
@@ -249,25 +251,33 @@ public class Common {
 			final String toHex = color.substring(11, 17);
 			message = message.replace(message.substring(start, next2), gradient(fromHex, toHex, text2, style2));
 		}
-		for (Matcher matcher = Common.hexPattern.matcher(message); matcher.find(); matcher = Common.hexPattern.matcher(message)) {
+		for (Matcher matcher = Utilities.hexPattern.matcher(message); matcher.find(); matcher = Utilities.hexPattern.matcher(message)) {
 			final String color2 = message.substring(matcher.start(), matcher.end());
 			message = message.replace(color2, ChatColor.of(color2.substring(1)) + "");
 		}
 		return ChatColor.translateAlternateColorCodes('&', message);
 	}
 
+	public static List<String> colorize(final List<String> messages) {
+		final List<String> result = new ArrayList<>();
+		for (final String msg : messages) {
+			result.add(colorize(msg));
+		}
+		return result;
+	}
+
 	public static String withOutColors(String message) {
-		for (Matcher matcher = Common.rainbowPattern.matcher(message); matcher.find(); matcher = Common.rainbowPattern.matcher(message)) {
+		for (Matcher matcher = Utilities.rainbowPattern.matcher(message); matcher.find(); matcher = Utilities.rainbowPattern.matcher(message)) {
 			final int start = matcher.start();
 			final int end = matcher.end();
 			message = message.replace(message.substring(start, end), "");
 		}
-		for (Matcher matcher = Common.gradientPattern.matcher(message); matcher.find(); matcher = Common.gradientPattern.matcher(message)) {
+		for (Matcher matcher = Utilities.gradientPattern.matcher(message); matcher.find(); matcher = Utilities.gradientPattern.matcher(message)) {
 			final int start = matcher.start();
 			final int end = matcher.end();
 			message = message.replace(message.substring(start, end), "");
 		}
-		for (Matcher matcher = Common.hexPattern.matcher(message); matcher.find(); matcher = Common.hexPattern.matcher(message)) {
+		for (Matcher matcher = Utilities.hexPattern.matcher(message); matcher.find(); matcher = Utilities.hexPattern.matcher(message)) {
 			final int start = matcher.start();
 			final int end = matcher.end();
 			message = message.replace(message.substring(start, end), "");
@@ -393,47 +403,47 @@ public class Common {
 
 	public static String replaceSpecialSymbols(String message) {
 		if (message.contains(":)")) {
-			message = message.replaceAll(":\\)", "\u263a");
+			message = message.replaceAll(":\\)", "☺");
 		}
 		if (message.contains(":(")) {
-			message = message.replaceAll(":\\(", "\u2639");
+			message = message.replaceAll(":\\(", "☹");
 		}
 		if (message.contains("<3")) {
-			message = message.replaceAll("<3", "\u2764");
+			message = message.replaceAll("<3", "❤");
 		}
 		if (message.contains("-_-")) {
-			message = message.replaceAll("-_-", "\u0ca0_\u0ca0");
+			message = message.replaceAll("-_-", "ಠ_ಠ");
 		}
 		if (message.contains("*-*")) {
-			message = message.replaceAll("\\*-\\*", "\u271e");
+			message = message.replaceAll("\\*-\\*", "✞");
 		}
 		if (message.contains("^-^")) {
-			message = message.replaceAll("\\^-\\^", "\u273f");
+			message = message.replaceAll("\\^-\\^", "✿");
 		}
 		return message;
 	}
 
 	public static int getMessageLengthWithoutColor(String message) {
 		int length = 0;
-		Matcher rainbowMatcher = Common.rainbowPattern.matcher(message);
-		Matcher gradientMatcher = Common.gradientPattern.matcher(message);
-		Matcher hexMatcher = Common.hexPattern.matcher(message);
+		Matcher rainbowMatcher = Utilities.rainbowPattern.matcher(message);
+		Matcher gradientMatcher = Utilities.gradientPattern.matcher(message);
+		Matcher hexMatcher = Utilities.hexPattern.matcher(message);
 		while (rainbowMatcher.find()) {
 			final String color = message.substring(rainbowMatcher.start(), rainbowMatcher.end());
 			message = message.replace(color, "");
-			rainbowMatcher = Common.rainbowPattern.matcher(message);
+			rainbowMatcher = Utilities.rainbowPattern.matcher(message);
 			length = message.length();
 		}
 		while (gradientMatcher.find()) {
 			final String color = message.substring(gradientMatcher.start(), gradientMatcher.end());
 			message = message.replace(color, "");
-			gradientMatcher = Common.gradientPattern.matcher(message);
+			gradientMatcher = Utilities.gradientPattern.matcher(message);
 			length = message.length();
 		}
 		while (hexMatcher.find()) {
 			final String color = message.substring(hexMatcher.start(), hexMatcher.end());
 			message = message.replace(color, "");
-			hexMatcher = Common.hexPattern.matcher(message);
+			hexMatcher = Utilities.hexPattern.matcher(message);
 			length = message.length();
 		}
 		while (message.contains("&")) {
@@ -446,67 +456,48 @@ public class Common {
 
 	public static boolean containsNonAlphabetSymbols(final String message) {
 		for (int i = 0; i < message.length(); ++i) {
-			if (!Common.alphabet.containsValue(String.valueOf(message.charAt(i)))) {
+			if (!Utilities.alphabet.containsValue(String.valueOf(message.charAt(i)))) {
 				return true;
 			}
 		}
 		return false;
 	}
 
-	public static String getColorRussianName(final org.bukkit.ChatColor color) {
-		switch (color) {
-			case AQUA -> {
-				return "Голубой";
-			}
-			case BLACK -> {
-				return "Чёрный";
-			}
-			case BLUE -> {
-				return "Синий";
-			}
-			case DARK_AQUA -> {
-				return "Бирюзовый";
-			}
-			case DARK_BLUE -> {
-				return "Тёмно-синий";
-			}
-			case DARK_GRAY -> {
-				return "Тёмно-серый";
-			}
-			case DARK_GREEN -> {
-				return "Тёмно-зелёный";
-			}
-			case DARK_PURPLE -> {
-				return "Фиолетовый";
-			}
-			case DARK_RED -> {
-				return "Тёмно-красный";
-			}
-			case GOLD -> {
-				return "Золотой";
-			}
-			case GRAY -> {
-				return "Серый";
-			}
-			case GREEN -> {
-				return "Зелёный";
-			}
-			case LIGHT_PURPLE -> {
-				return "Пурпурный";
-			}
-			case RED -> {
-				return "Красный";
-			}
-			case WHITE -> {
-				return "Белый";
-			}
-			case YELLOW -> {
-				return "Жёлтый";
-			}
-			default -> {
-				return null;
-			}
+	public static String getColorRussianName(final ChatColor color) {
+		if (AQUA.equals(color)) {
+			return "Голубой";
+		} else if (BLACK.equals(color)) {
+			return "Чёрный";
+		} else if (BLUE.equals(color)) {
+			return "Синий";
+		} else if (DARK_AQUA.equals(color)) {
+			return "Бирюзовый";
+		} else if (DARK_BLUE.equals(color)) {
+			return "Тёмно-синий";
+		} else if (DARK_GRAY.equals(color)) {
+			return "Тёмно-серый";
+		} else if (DARK_GREEN.equals(color)) {
+			return "Тёмно-зелёный";
+		} else if (DARK_PURPLE.equals(color)) {
+			return "Фиолетовый";
+		} else if (DARK_RED.equals(color)) {
+			return "Тёмно-красный";
+		} else if (GOLD.equals(color)) {
+			return "Золотой";
+		} else if (GRAY.equals(color)) {
+			return "Серый";
+		} else if (GREEN.equals(color)) {
+			return "Зелёный";
+		} else if (LIGHT_PURPLE.equals(color)) {
+			return "Пурпурный";
+		} else if (RED.equals(color)) {
+			return "Красный";
+		} else if (WHITE.equals(color)) {
+			return "Белый";
+		} else if (YELLOW.equals(color)) {
+			return "Жёлтый";
 		}
+		return null;
 	}
 
 	public static String getFullFormatedStringTime(int seconds) {
@@ -632,6 +623,18 @@ public class Common {
 	}
 
 	public static void sendMessages(final CommandSender sender, final String... messages) {
+		for (final String message : messages) {
+			sender.sendMessage(colorize(message));
+		}
+	}
+
+	public static void sendMessages(final Player player, final List<String> messages) {
+		for (final String message : messages) {
+			player.sendMessage(colorize(message));
+		}
+	}
+
+	public static void sendMessages(final CommandSender sender, final List<String> messages) {
 		for (final String message : messages) {
 			sender.sendMessage(colorize(message));
 		}

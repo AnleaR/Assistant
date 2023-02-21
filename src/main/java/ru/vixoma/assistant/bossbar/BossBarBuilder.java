@@ -5,7 +5,7 @@ import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarFlag;
 import org.bukkit.boss.BarStyle;
 import org.bukkit.boss.BossBar;
-import ru.vixoma.assistant.util.Common;
+import ru.vixoma.assistant.util.Utilities;
 
 public class BossBarBuilder {
 	public final BossBar bar;
@@ -15,7 +15,7 @@ public class BossBarBuilder {
 	}
 
 	public BossBarBuilder title(final String title) {
-		bar.setTitle(Common.colorize(title));
+		bar.setTitle(Utilities.colorize(title));
 		return this;
 	}
 
